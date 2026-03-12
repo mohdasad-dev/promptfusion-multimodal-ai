@@ -26,6 +26,9 @@ import ai_image9 from "./ai_image9.jpg";
 import ai_image10 from "./ai_image10.jpg";
 import ai_image11 from "./ai_image11.jpg";
 import ai_image12 from "./ai_image12.jpg";
+import trial from "./trial.png";
+import trial2 from "./trial2.png";
+
 
 export const assets = {
     logo,
@@ -42,7 +45,9 @@ export const assets = {
     logout_icon,
     logo_full_dark,
     diamond_icon,
-    gallery_icon
+    gallery_icon,
+    trial,
+  trial2
 };
 
 export const dummyUserData = {

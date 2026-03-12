@@ -16,7 +16,7 @@ export const textMessageController = async (req, res) => {
 
         //  Check Credits
 
-        if (req.user.credits < 1) {
+        if (req.user.credit < 1) {
             return res.json({
                 success: false,
                 message: "You don't have enough credits to use this feature"
@@ -25,7 +25,15 @@ export const textMessageController = async (req, res) => {
 
         const { chatId, prompt } = req.body
 
-        const chat = await Chat.findOne({ userId, _id: chatId })
+        const chat = await Chat.findOne({ userId, _id: chatId });
+
+        if (!chat) {
+          return res.json({
+            success:false,
+            message:"Chat not found"
+          })
+        }
+
         chat.messages.push({ role: "user", content: prompt, timeStamp: Date.now(), image: false })
 
 
@@ -48,9 +56,25 @@ export const textMessageController = async (req, res) => {
         chat.messages.push(reply);
         await chat.save();
 
-        await User.updateOne({ _id: userId }, { $inc: { credits: -1 } })
+        // await User.updateOne({ _id: userId }, { $inc: { credits: -1 } })
+        // res.json({ success: true, reply });
 
-        res.json({ success: true, reply });
+        // req.user.credits -= 1
+        // await req.user.save()
+
+
+        await User.updateOne(
+            { _id: userId },
+            { $inc: { credit: -1 } }
+        );
+
+        const updatedUser = await User.findById(userId);
+
+        res.json({
+            success: true,
+            reply,
+            credit: updatedUser.credit
+        });
 
     } catch (error) {
         res.json({ success: false, message: error.message })
@@ -129,7 +153,7 @@ export const imageMessageController = async (req, res) => {
         const userId = req.user._id;
         //  Check Credits
 
-        if (req.user.credits < 2) {
+        if (req.user.credit < 2) {
             return res.json({
                 success: false,
                 message: "You don't have enough creditsto use this feature"
@@ -183,12 +207,27 @@ export const imageMessageController = async (req, res) => {
             image: true,
             isPublished
         };
-        res.json({ success: true, reply });
+        // res.json({ success: true, reply });
 
         chat.messages.push(reply)
         await chat.save();
 
-        await User.updateOne({ _id: userId }, { $inc: { credits: -2 } })
+        // await User.updateOne({ _id: userId }, { $inc: { credits: -2 } })
+        // req.user.credits -= 2
+        // await req.user.save()
+
+        await User.updateOne(
+            { _id: userId },
+            { $inc: { credit: -2 } }
+          );
+          
+          const updatedUser = await User.findById(userId);
+          
+          res.json({
+            success: true,
+            reply,
+            credit: updatedUser.credit
+          });
 
         // }
     } catch (error) {

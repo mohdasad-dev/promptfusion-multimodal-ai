@@ -9,18 +9,22 @@ import '/Users/asif/Desktop/QuickGPT/client/src/assets/prism.css'
 import Loading from './pages/Loadings'
 import { useAppContext } from './context/AppContext'
 import Login from './pages/Login'
+import { Toaster } from "react-hot-toast";
+import Success from './pages/Success'
+
+{/* <Toaster />   */}
 const App = () => {
 
-  const { user } = useAppContext()
+  const { user, loadingUser } = useAppContext()
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { pathname } = useLocation()
 
-  if (pathname === '/loading') return <Loading />
+  if (pathname === '/loading' || loadingUser) return <Loading />
   return (
     <>
-
-      <img src={assets.menu_icon} className='absolute top-3 left-3 w-8 h-8 cursor-pointer md:hiddennot:dark-invert' onClick={() => setIsMenuOpen(true)} />
+    <Toaster  />
+      {isMenuOpen && <img src={assets.menu_icon} className='absolute top-3 left-3 w-8 h-8 cursor-pointer md:hiddennot:dark-invert' onClick={() => setIsMenuOpen(true)} />}
 
       {user ? (
         <div className='dark:bg-linear-to-b from-[#242124] to-[#000000] dark:text-white'>
@@ -30,6 +34,7 @@ const App = () => {
             <Route path='/' element={<ChatBox />}></Route>
             <Route path='/credits' element={<Credits />}></Route>
             <Route path='/community' element={<Community />}></Route>
+            <Route path="/success" element={<Success />} />
           </Routes>
         </div>
       </div>

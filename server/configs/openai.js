@@ -1,14 +1,3 @@
-// import {OpenAI} from 'openai'
-
-// const openai = new OpenAI(
-//     api_key="process.env.GEMINI_API_KEY",
-//     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-// )
-
-
-// export default openai
-
-
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -17,3 +6,12 @@ const openai = new OpenAI({
 });
 
 export default openai;
+
+// import OpenAI from "openai";
+
+// const openai = new OpenAI
+//   apiKey: process.env.GEMINI_API_KEY,
+//   baseURL: "https://generativelanguage.googleapis.com/v1beta3", // correct Gemini endpoint
+// });
+
+// export default openai;

@@ -7,6 +7,8 @@ import chatRouter from './routes/chatRoutes.js'
 import messageRouter from './routes/messageRoutes.js'
 import creditRouter from './routes/creditRoutes.js'
 import { stripeWebhooks } from './controllers/webhooks.js'
+import dotenv from "dotenv";
+dotenv.config();
  
 const app = express()
 
@@ -35,4 +37,3 @@ const PORT = process.env.PORT || 3000
 app.listen(PORT, ()=> {
     console.log(`server is running on ${PORT}`)
 });
-
