@@ -139,12 +139,12 @@ promptfusion-multimodal-ai/
 <h2>📸 Screenshots</h2>
 
 <p align="center">
-  <img src="./screenshots/dashboard.png" width="45%" />
-  <img src="./screenshots/chat.png" width="45%" />
+  <img src="./screenshots/login.png" width="45%" />
+  <img src="./screenshots/home.png" width="45%" />
 </p>
 
 <p align="center">
-  <img src="./screenshots/login.png" width="45%" />
+  <img src="./screenshots/chat.png" width="45%" />
   <img src="./screenshots/darkmode.png" width="45%" />
 </p>
 
