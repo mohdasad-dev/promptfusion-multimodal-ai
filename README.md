@@ -136,37 +136,17 @@ promptfusion-multimodal-ai/
 
 ---
 
-## 📸 Screenshots
+<h2>📸 Screenshots</h2>
 
-### Home Page
+<p align="center">
+  <img src="./screenshots/dashboard.png" width="45%" />
+  <img src="./screenshots/chat.png" width="45%" />
+</p>
 
-```markdown
-![Home](./screenshots/home.png)
-```
-
-### Dashboard
-
-```markdown
-![Dashboard](./screenshots/dashboard.png)
-```
-
-### Chat Interface
-
-```markdown
-![Chat Interface](./screenshots/chat.png)
-```
-
-### Dark Mode
-
-```markdown
-![Dark Mode](./screenshots/darkmode.png)
-```
-
-### Login Page
-
-```markdown
-![Login](./screenshots/login.png)
-```
+<p align="center">
+  <img src="./screenshots/login.png" width="45%" />
+  <img src="./screenshots/darkmode.png" width="45%" />
+</p>
 
 > Create a folder named **screenshots** in your root directory and place all images inside it.
 
