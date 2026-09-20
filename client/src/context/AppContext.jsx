@@ -29,9 +29,17 @@ export const AppContextProvider = ({ children }) => {
                 setUser(data.user)
             } else {
                 toast.error(data.message);
+                logout(); // Clear invalid token
             }
         } catch (error) {
-            toast.error(error.message);
+            if (error.response && error.response.status === 401) {
+                toast.error("Session expired. Please log in again.");
+                setToken(null);
+                localStorage.removeItem('token');
+                setUser(null);
+            } else {
+                toast.error(error.message);
+            }
         } finally {
             setLoadingUser(false)
         }
